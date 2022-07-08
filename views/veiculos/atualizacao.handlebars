@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Atualização dos dados do veiculo</h1>
+    <form method="post" action="/veiculoAtualizacao/{{umVeiculo.id}}">
+        <div class="form-row">
+
+            <div class="col-6 my-1">
+                <input type="text" name="placa" class="form-control" placeholder="placa" value="{{umVeiculo.placa}}">
+            </div>
+            <div class="col-6 my-1">
+                <input type="text" name="marca" class="form-control" placeholder="marca" value="{{umVeiculo.marca}}">
+            </div>
+            <div class="col-6 my-1">
+                <input type="text" name="modelo" class="form-control" placeholder="modelo" value="{{umVeiculo.modelo}}">
+            </div>
+            <div class="col-6 my-1">
+                <input type="text" name="versao" class="form-control" placeholder="versao" value="{{umVeiculo.versao}}">
+            </div>
+            <div class="col-6 my-1">
+                <input type="text" name="ano" class="form-control" placeholder="ano" value="{{umVeiculo.ano}}">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="http://localhost:3000/veiculos"><button type="button" class="btn btn-secondary">Close</button></a>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+</div>

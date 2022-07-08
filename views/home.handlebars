@@ -1,0 +1,88 @@
+<a href="http://localhost:3000/veiculos" style="text-decoration: none;">
+    <h1 style="text-align: center;">Lista de veiculos</h1>
+</a>
+<div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        style="float: left; display: flex;">
+        Adicionar veiculo
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de veiculo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/veiculo">
+                        <div class="form-row">
+                            <div class="col-6 my-1">
+                                <input type="text" name="placa" class="form-control" placeholder="placa">
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" name="marca" class="form-control" placeholder="marca">
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" name="modelo" class="form-control" placeholder="modelo">
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" name="versao" class="form-control" placeholder="versao">
+                            </div>
+                            <div class="col-12 my-1">
+                                <input type="ano" name="ano" class="form-control" placeholder="ano">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <form action="/veiculos" method="GET" class="form-group pesqui" style="display: flex; float: right;">
+        <input type="text" name="search" placeholder="Id do Pedido"
+            style="padding-left: 5px;margin-right: 5px;border-radius: 5px;" />
+        <input type="submit" class="btn btn-primary" value="buscar" />
+    </form>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">placa</th>
+                <th scope="col">marca</th>
+                <th scope="col">modelo</th>
+                <th scope="col">versao</th>
+                <th scope="col">ano</th>
+                <th scope="col">Data de criação</th>
+                <th scope="col">Data de atualização</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each veiculos}}
+            <tr>
+                <th scope="row">{{this.id}}</th>
+                <td scope="row">{{this.placa}}</td>
+                <td scope="row">{{this.marca}}</td>
+                <td scope="row">{{this.modelo}}</td>
+                <th scope="row">{{this.versao}}</th>
+                <td scope="row">{{this.ano}}</td>
+                <td scope="row">{{this.createdAt}}</td>
+                <td scope="row">{{this.updatedAt}}</td>
+                <td id="acoes-botoes" style="display: flex;">
+                    <a href="/veiculoUnico/{{this.id}}">
+                        <button type="button" class="btn btn-primary">Alterar</button></a>
+                    <form action="/veiculoDelete/{{this.id}}" method="post">
+                        <button class="btn btn-danger" type="submit">Remover</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
